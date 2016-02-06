@@ -1,0 +1,49 @@
+
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+	<link rel=stylesheet type=text/css href="{{url_for('static', filename='bootstrap.css')}}">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='restStyle.css')}}">
+</head>
+<body>
+	<div class = "container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Manage Restaurants</h1>
+			</div>
+		</div>
+
+		{% with messages = get_flashed_messages() %}
+		        {% if messages %}
+		            <ul>
+		            {% for message in messages%}
+		                <li><h1 class="label label-default">{{message}}</h1></li>
+		            {% endfor %}
+		            </ul>
+		        {% endif %}
+		            {% endwith %}
+
+		<div class="row">
+			<div class="col-md-2">
+				<p><a class="btn btn-primary btn-lg" href='{{url_for('newRestaurantMenu') }}' role="button">Create a new resaturant</a></p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="restBox">
+				{% for r in restaurants %}
+					<h3>{{r.name}}</h3>
+					<a class = 'label label-info' href='{{url_for('restaurantMenu', restaurant_id = r.id) }}'>Details</a>
+					<a class= 'label label-warning' href='{{url_for('editRestaurant', restaurant_id = r.id) }}'>Edit</a>
+					<a class= 'label label-danger' href = '{{url_for('deleteRestaurant', restaurant_id = r.id) }}'>Delete</a>
+				{% endfor %}
+				</br>
+				</br>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+body{
+	background-image: url('bcg1.png');
+	text-align: center;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	color: #808080;
+}
+
+h3{
+	font-family: 'Metrophobic', Arial, serif; 
+	font-weight: 400; 
+}
+
+ul{
+	list-style-type:none;
+}
+
+li{
+	display: inline;
+}
+
+.restBox{
+	border-width: 7px;
+	border-color:  #99bbff;
+	background-image: url('bcg2.png');
+}
+
+.menuBox{
+	border-width: 7px;
+	border-color:  #99bbff;
+	background-image: url('bcg3.png');
+}
+
+.edit{
+	background-image: url('edit.jpg');	
+}

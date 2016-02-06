@@ -1,0 +1,58 @@
+
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='bootstrap.css')}}">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='restStyle.css')}}">
+</head>
+<body>
+    <div class = "container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{restaurant.name}}</h1>
+            </div>
+        </div>
+
+       {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                    {% for message in messages%}
+                        <li><h1 class="label label-default">{{message}}</h1></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+                    {% endwith %}
+
+        <div class="row">
+            <div class="col-md-2">
+                <p><a class="btn btn-primary btn-md" href='{{url_for('newMenuItem', restaurant_id = restaurant.id) }}' role="button">Create new menu item</a></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <p><a class="btn btn-info btn-md" href='{{url_for('restaurant') }}' role="button">Go back to view all resturants</a></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="menuBox">
+                    {% for i in items %}
+                    <h3>Name: {{i.name}}</h3>
+                    <h3>Desciption: {{i.description}}</h3>
+                    <h3>Price: {{i.price}}</h3>
+                    <a class= 'label label-warning' href='{{url_for('editMenuItem', restaurant_id = restaurant.id, menu_id = i.id) }}'>Edit</a>
+                    <a class= 'label label-danger' href ='{{url_for('deleteMenuItem', restaurant_id = restaurant.id, menu_id = i.id ) }}'>Delete</a>
+                    {% endfor %}
+                </br>
+                </br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
